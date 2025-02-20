@@ -1,0 +1,5 @@
+POST https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/train
+
+###
+
+GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/predict/left/0/right/0
