@@ -4,7 +4,7 @@ from langchain.chat_models import init_chat_model
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import ChatPromptTemplate
 
-class AppModel:  
+class AppModel:   
     def __init__(self):    
         load_dotenv()     
         self.model = init_chat_model("gpt-4o-mini", model_provider="openai")    

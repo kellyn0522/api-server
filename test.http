@@ -3,3 +3,16 @@ POST https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/train
 ###
 
 GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/predict/left/0/right/0
+
+### 
+GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/says?text=hi
+
+### 
+GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/chat?user=alex&text=My name is kellyn
+
+###
+GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/chat?user=alex&text=What is my name
+
+### 
+GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/search?user=alex&text=What is the weather in SF
+
