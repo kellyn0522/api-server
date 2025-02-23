@@ -1,9 +1,37 @@
-POST https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/train
+# 모델 학습 및 호출 /train/{model} --> 호출 이후 결과 출력은 아래 predict를 이용
+# AND Model
+POST https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/train/and
+
+# 결과 출력 /predict/{model}/{left}/{right}
+###
+GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/predict/and/1/1
+
+
+# OR Model
+###
+POST https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/train/or
 
 ###
+GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/predict/or/1/1
 
-GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/predict/left/0/right/0
 
+# NOT Model
+###
+POST https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/train/not
+
+# not의 경우 left만 들어감 
+###
+GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/predict/not/0
+
+
+# XOR Model
+###
+POST https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/train/xor
+
+###
+GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/predict/xor/0/0
+
+# 챗봇
 ### 
 GET https://fluffy-succotash-wqq9qxr55753g4p4-8000.app.github.dev/says?text=hi
 

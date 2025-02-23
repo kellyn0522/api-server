@@ -5,7 +5,10 @@ from fastapi import FastAPI
 import model
 
 # 그 안에 있는 AndModel 클래스의 인스턴스를 생성
-model = model.AndModel()
+and_model = model.AndModel()
+or_model = model.OrModel()
+not_model = model.NotModel()
+xor_model = model.XorModel()
 
 app = FastAPI()
 
@@ -19,14 +22,37 @@ def read_root():
 def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
 
-@app.get("/predict/left/{left}/right/{right}")    # endpoint 엔드포인트 
-def predict(left: int, right : int):
-    result = model.predict([left, right])
-    return {"result" : result}
+@app.get("/predict/{model}/{left}/{right}")    # endpoint 엔드포인트 
+def predict(model : str, left: int, right : int):
+    if model.lower() == "and":
+        result = and_model.predict([left, right])
+    elif model.lower() == "or":
+        result = or_model.predict([left, right])
+    elif model.lower() == "xor":
+        result = xor_model.predict([left, right])
+    else : 
+        return {"result" : "error"}
+    return {"model" : model, "input" : [left, right], "result" : result}
 
-@app.post("/train")
+
+@app.get("/predict/not/{num}")
+def predict(num : int):
+    result = not_model.predict(num)   # not은 입력 하나만 받음
+    return {"model" : "not", "input" : num, "result" : result}
+
+
+@app.post("/train/{model}")
 # @app.get("/train")
-def train():
-    model.train()
-    return {"result": "OK"}
+def train(model : str):
+    if model.lower() == "and":
+        and_model.train()
+    elif model.lower() == "or":
+        or_model.train()
+    elif model.lower() == "not":
+        not_model.train()
+    elif model.lower() == "xor":
+        xor_model.train()
+    else : 
+        return {"result" : "error"}
+    return {"model" : model, "result": "OK"}
 
